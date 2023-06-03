@@ -1,0 +1,7 @@
+package <package>
+<import>
+public class <name> implements Serializable {
+    <atribute>
+    <body-set>
+    <body-get>
+}

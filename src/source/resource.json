@@ -1,0 +1,39 @@
+{
+
+  "ciudad": {"package": "dto",
+        "name": "Ciudad",
+        "attributes": [
+          {
+            "name": "codigo",
+            "type": "String"
+          },
+          {
+            "name": "nombre",
+            "type": "String"
+          }
+
+        ]
+  },
+  "persona":{
+        "package": "dto",
+        "name": "Personas",
+        "attributes": [
+          {
+            "name": "codigo",
+            "type": "String",
+            "foreing-key": "n"
+          },
+          {
+            "name": "nombre",
+            "type": "String",
+             "foreing-key": "n"
+          },
+          {
+            "name": "ciudad",
+            "type": "Ciudad",
+             "foreing-key": "y"
+
+          }
+        ]
+      }
+}
