@@ -1,37 +1,81 @@
 {
-
-  "ciudad": {"package": "dto",
-        "name": "Ciudad",
+ "maestra": {"package": "dto.maestra",
+        "name": "Maestra",
+        "table": "maestra",
         "attributes": [
+           {
+            "name": "cdmaestra",
+            "type": "integer",
+            "pk":"y",
+            "foreing-key": "n"
+          },
+
+          {
+            "name": "nombre",
+            "type": "varchar",
+            "pk":"n",
+            "foreing-key": "n"
+          }
+
+        ]
+  },
+  "ciudad": {"package": "dto.ciudad",
+        "name": "Ciudad",
+        "table": "ciudad",
+        "attributes": [
+           {
+            "name": "nmciudad",
+            "type": "integer",
+            "pk":"y",
+            "foreing-key": "n"
+          },
           {
             "name": "codigo",
-            "type": "String"
+            "type": "varchar",
+            "pk":"n",
+            "foreing-key": "n"
           },
           {
             "name": "nombre",
-            "type": "String"
+            "type": "varchar",
+            "pk":"n",
+            "foreing-key": "n"
           }
 
         ]
   },
   "persona":{
-        "package": "dto",
+        "package": "dto.persona",
         "name": "Personas",
+        "table": "persona",
         "attributes": [
           {
             "name": "codigo",
-            "type": "String",
+            "type": "varchar",
+            "pk":"y",
+            "filter": "y",
             "foreing-key": "n"
           },
           {
             "name": "nombre",
-            "type": "String",
+            "type": "varchar",
+            "pk":"n",
              "foreing-key": "n"
           },
           {
-            "name": "ciudad",
-            "type": "Ciudad",
-             "foreing-key": "y"
+            "name": "nmciudadt",
+            "type": "integer",
+            "pk":"n",
+            "foreing-key": "y",
+             "foreing": {"name": "ciudad"}
+
+          },
+          {
+            "name": "cdpais",
+            "type": "integer",
+            "pk":"n",
+            "foreing-key": "y",
+             "foreing": {"name": "maestra"}
 
           }
         ]

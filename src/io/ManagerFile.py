@@ -1,16 +1,24 @@
+import os
 class ManagerFile:
 
-    def __init__(self,namefile):
-        self.namefile = namefile
 
-    def escribir(self,texto):
-        with open(self.namefile, "a") as file:
-            file.write(texto)
-            file.write("I am adding in more lines\n")
-            file.write("And more…")
 
-    def load(self):
-        with open(self.namefile, encoding="utf-8") as file:
+    def write(self,namefile,texto):
+        with open(namefile, "a",encoding="utf-8") as file:
+            token = []
+            token.append(texto)
+            token.append("\n")
+            file.write(''.join(token))
+            file.close()
+
+    def load(self,namefile):
+        with open(namefile, encoding="utf-8") as file:
             read_data = file.read()
             file.close()
             return read_data
+
+    def createDirectory(self,path):
+        if not os.path.exists(path):
+            os.mkdir(path)
+
+            

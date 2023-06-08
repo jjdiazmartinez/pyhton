@@ -1,6 +1,10 @@
-{"types":{"Date": "java.util.Date",
+{"types-languaje":{"Date": "java.util.Date",
            "String": "",
           "int": "",
           "Integer": "",
-          "ArrayList": "java.util.ArrayList"}
-}
+          "ArrayList": "java.util.ArrayList"},
+"types-bd": {
+              "varchar": "String",
+              "integer": "Integer",
+              "date": "Date"
+            }}
