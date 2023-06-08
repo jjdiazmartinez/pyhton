@@ -1,0 +1,66 @@
+package <package>;
+
+import co.com.prinza.arpi.config.ManagerQuery;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+import java.util.List;
+import java.util.Map;
+
+
+@Repository
+public class <NameClass>Impl implements <NameClass>  {
+
+
+
+    JdbcTemplate jdbcTemplate;
+    ManagerQuery managerQuery = ManagerQuery.getInstance();
+    public <NameClass>Impl(DataSource dataSource) {
+        jdbcTemplate = new JdbcTemplate(dataSource);
+    }
+
+    @Override
+    public List<<DTO>> getAll() {
+
+        String QUERY = managerQuery.getQuery("<QUERY_GET_ALL>");
+        return jdbcTemplate.query(QUERY, new <MAPPER>);
+    }
+
+    @Override
+    public <DTO> getById(String id) {
+        try{
+            String QUERY = managerQuery.getQuery("<QUERY_BY_ID>");
+            return jdbcTemplate.queryForObject(QUERY, new <MAPPER>,id);
+        }
+        catch(EmptyResultDataAccessException ex){
+            return null;
+        }
+    }
+
+    @Override
+    public <DTO> insert(<DTO> entity) {
+		String INSERT = managerQuery.getQuery("<INSERT>");
+
+		jdbcTemplate.update(INSERT,<PARAM_INSERT>);
+		return entity;
+
+    }
+
+    @Override
+    public <DTO> update(<DTO> entity) {
+		String UPDATE = managerQuery.getQuery("<UPDATE>");
+        jdbcTemplate.update(UPDATE,<PARAM_UPDATE>);
+        return entity;
+    }
+
+    @Override
+    public Boolean delete(String id) {
+		String DELETE = managerQuery.getQuery("<DELETE>");
+        return jdbcTemplate.update(DELETE,
+                id
+        )>0;
+    }
+
+
+}

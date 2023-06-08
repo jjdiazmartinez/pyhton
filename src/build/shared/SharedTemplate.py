@@ -10,13 +10,18 @@ class SharedTemplate(object):
             self.listletras = ["A", "B", "C","D"]
             self.type_structure = managerFile.load("D:/Areas/tool-python/estructura-py/src/source/type.json")
             self.templatedto = managerFile.load("D:/Areas/tool-python/estructura-py/src/template/dto.template")
+            self.templatemapper = managerFile.load("D:/Areas/tool-python/estructura-py/src/template/mapper.template")
+            self.templatepersis = managerFile.load("D:/Areas/tool-python/estructura-py/src/template/datapersist.template")
             self.types = json.loads(self.type_structure)
             #Creo un diccionario
             self.types_own = dict()
 
         def getTempleteDto(self):
             return self.templatedto
-
+        def getTempleteMapper(self):
+            return self.templatemapper
+        def getTemplatePersist(self):
+            return self.templatepersis
         def getTypeStructure(self):
             return self.types
         def setType(self,name,type):

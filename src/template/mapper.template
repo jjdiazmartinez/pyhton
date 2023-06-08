@@ -1,0 +1,14 @@
+package <package>
+import org.springframework.jdbc.core.RowMapper;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+<import>
+public class <Name>Mapper implements RowMapper<<DTO>> {
+
+    @Override
+    public <DTO> mapRow(ResultSet resultSet, int i) throws SQLException {
+        <DTO> antity=new <DTO>();
+        <body-set-entity>
+        return antity;
+    }
+}

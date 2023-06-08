@@ -6,8 +6,10 @@
 
 import src.build.shared.SharedTemplate as template
 import src.io.ManagerFile as managerfile
-import src.build.BuildLayerDto as buildLayDto
-import src.build.BuildLayerQuery as buildLayerQ
+import src.build.java.BuildLayerDto as buildLayDto
+import src.build.java.BuildLayerQuery as buildLayerQ
+import src.build.java.BuildLayerMapper as buildLayerM
+import src.build.LayerInterfaz as layerInterfaz
 import json
 def build():
 
@@ -20,9 +22,11 @@ def build():
     templ.setStructure(structure)
 
     buildLayerDto = buildLayDto.BuildLayerDto()
+    buildLayerMapper  =buildLayerM.BuildLayerMapper()
     buildLayerQuery= buildLayerQ.BuildLayerQuery()
-   # buildLayerDto.buildComponent(structure)
-    buildLayerQuery.buildComponent(structure)
+    buildLayerDto.buildComponent(structure)
+   # buildLayerQuery.buildComponent(structure)
+    buildLayerMapper.buildComponent(structure)
 
 
 
