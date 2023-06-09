@@ -12,16 +12,31 @@ class SharedTemplate(object):
             self.templatedto = managerFile.load("D:/Areas/tool-python/estructura-py/src/template/dto.template")
             self.templatemapper = managerFile.load("D:/Areas/tool-python/estructura-py/src/template/mapper.template")
             self.templatepersis = managerFile.load("D:/Areas/tool-python/estructura-py/src/template/datapersist.template")
+            self.businesslogicexception = managerFile.load("D:/Areas/tool-python/estructura-py/src/template/businesslogicexception.template")
+            self.dataccesexception = managerFile.load("D:/Areas/tool-python/estructura-py/src/template/dataccesexception.template")
+            self.datamanagerexception = managerFile.load("D:/Areas/tool-python/estructura-py/src/template/datamanagerexception.template")
+            self.datapersistinterfaz =managerFile.load("D:/Areas/tool-python/estructura-py/src/template/datapersistinterfaz.template")
+            self.managerquery=managerFile.load("D:/Areas/tool-python/estructura-py/src/template/managerquery.template")
             self.types = json.loads(self.type_structure)
             #Creo un diccionario
             self.types_own = dict()
 
+        def getTemplateDatamanagerexception(self):
+            return self.datamanagerexception
+        def getTemplateDataccesexception(self):
+            return self.dataccesexception
+        def getTemplateBusinesslogicexception(self):
+            return self.businesslogicexception
         def getTempleteDto(self):
             return self.templatedto
         def getTempleteMapper(self):
             return self.templatemapper
         def getTemplatePersist(self):
             return self.templatepersis
+        def getTemplateDatapersistinterfaz(self):
+            return self.datapersistinterfaz
+        def getTemplateManagerquery(self):
+            return self.managerquery
         def getTypeStructure(self):
             return self.types
         def setType(self,name,type):
@@ -34,6 +49,10 @@ class SharedTemplate(object):
             return self.types_own
         def getLetras(self,idx):
             return self.listletras[idx]
+        def setBase(self,base):
+            self.base =base
+        def getBase(self):
+            return self.base
 
     instance = None
 

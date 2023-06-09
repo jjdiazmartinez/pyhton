@@ -21,7 +21,8 @@ class BuildDto:
         return self.template
 
     def doPackage(self):
-        self.template=self.template.replace("<package>",self.structure["package"])
+        base = template.SharedTemplate().getBase()
+        self.template=self.template.replace("<package>",base["groupId"]+"."+self.structure["package"])
     def doName(self):
         self.template = self.template.replace("<name>", self.structure["name"])
     def buildAttribute(self):
@@ -38,20 +39,21 @@ class BuildDto:
 
 
     def doImport(self):
+        base = template.SharedTemplate().getBase()
         token=[]
         for item in self.structure["attributes"]:
             try:
                 if  self.types["types-languaje"][item["type"]]!="":
-                    token.append("import "+self.types["types"][item["type"]]+";\n")
+                    token.append("import "+base["groupId"]+"."+self.types["types"][item["type"]]+";\n")
             except KeyError:
                 print('Clave no encontrada')
 
         for item in self.structure["attributes"]:
             try:
                 if item["foreing-key"] == 'y':
-                    token.append("import " + self.types_own[self.getFk(item)["name"]] + ";\n")
+                    token.append("import " + base["groupId"]+"."+self.types_own[self.getFk(item)["name"]] + ";\n")
                 else:
-                    token.append("import " + self.types_own[item["type"]] + ";\n")
+                    token.append("import " + base["groupId"]+"."+self.types_own[item["type"]] + ";\n")
 
             except KeyError:
                 print('Clave no encontrada')
@@ -62,7 +64,7 @@ class BuildDto:
         token = []
         for item in self.structure["attributes"]:
             if item["foreing-key"] == 'y':
-                token.append("public void set" + item["name"].capitalize() + "("+self.types_own[self.getFk(item)["name"]]+" "+item["name"]+")  {\n")
+                token.append("public void set" + item["name"].capitalize() + "("+self.getFk(item)["name"]+" "+item["name"]+")  {\n")
             else:
                 token.append(
                     "public void set" + item["name"].capitalize() + "(" + self.types["types-bd"][item["type"]] + " " +item["name"] + ")  {\n")
@@ -75,7 +77,7 @@ class BuildDto:
         token = []
         for item in self.structure["attributes"]:
             if item["foreing-key"] == 'y':
-                token.append("public " + self.types_own[self.getFk(item)["name"]] + " get" + item["name"].capitalize() + "()  {\n")
+                token.append("public " + self.getFk(item)["name"] + " get" + item["name"].capitalize() + "()  {\n")
             else:
                 token.append(
                     "public " + self.types["types-bd"][item["type"]] + " get" + item["name"].capitalize() + "()  {\n")

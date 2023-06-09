@@ -1,0 +1,64 @@
+package <package>.config;
+
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.core.io.ClassPathResource;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
+
+
+public class ManagerQuery {
+
+	private static final Logger LOG = LogManager.getLogger(ManagerQuery.class);
+
+	private static ManagerQuery instance;
+	private JSONObject query;
+
+	public static ManagerQuery getInstance() {
+		if (instance == null) {
+			instance = new ManagerQuery();
+			try {
+				instance.load();
+			} catch (Exception e) {
+				LOG.error(e.getMessage(), e);
+			}
+		}
+		return instance;
+	}
+
+	public void load() throws Exception {
+		try {
+			InputStream insfile = new ClassPathResource(
+                    "sql.json").getInputStream();
+            query= readFileJSONObject(insfile);
+		} catch (Exception pe) {
+			LOG.error(pe.getMessage(), pe);
+			throw new Exception("Error al cargar archivo sql.json");
+		}
+	}
+
+	public JSONObject readFileJSONObject(InputStream inputStream) {
+
+		JSONParser parser = new JSONParser();
+		JSONObject jsnobj = null;
+		try {
+			Reader reader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
+			Object obj = parser.parse(reader);
+			jsnobj = (JSONObject) obj;
+		} catch (IOException ioerr) {
+			LOG.error(String.format("ReadFileJSONObject IOException -> %s", ioerr.getMessage()));
+		} catch (Exception err) {
+			LOG.error(String.format("ReadFileJSONObject Exception Read -> %s", err.getMessage()));
+		}
+		return jsnobj;
+	}
+
+	public String getQuery(String keyQuery) {
+		return (String) query.get(keyQuery);
+	}
+
+}

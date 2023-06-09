@@ -5,6 +5,11 @@
           "ArrayList": "java.util.ArrayList"},
 "types-bd": {
               "varchar": "String",
-              "integer": "Integer",
-              "date": "Date"
-            }}
+              "integer": "int",
+              "date": "Date",
+              "decimal": "Double",
+              "double":"Double",
+              "float": "Float",
+              "timestamp":"timestamp",
+              "datetime":"timestamp"
+}}

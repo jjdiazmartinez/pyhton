@@ -1,0 +1,21 @@
+package <package>;
+
+import java.util.List;
+import java.util.Map;
+import <base-package>.exception.DataAccesException;
+<IMPORT>
+
+
+public interface  <NameClass>  {
+
+    List<<DTO>> getAll() throws DataAccesException ;
+
+    <DTO> getById(String id) throws DataAccesException;
+
+    <DTO> insert(<DTO> entity) throws DataAccesException;
+
+    <DTO> update(<DTO> entity) throws DataAccesException;
+
+    Boolean delete(String id) throws DataAccesException;
+
+}

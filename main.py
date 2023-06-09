@@ -9,7 +9,8 @@ import src.io.ManagerFile as managerfile
 import src.build.java.BuildLayerDto as buildLayDto
 import src.build.java.BuildLayerQuery as buildLayerQ
 import src.build.java.BuildLayerMapper as buildLayerM
-import src.build.LayerInterfaz as layerInterfaz
+import src.build.java.BuildLayerException as buildLayerEx
+import src.build.java.BuildLayerConfig as buildLayerCon
 import json
 def build():
 
@@ -19,14 +20,19 @@ def build():
     templ = template.SharedTemplate()
 
     structure=json.loads(data_structure)
-    templ.setStructure(structure)
-
+    templ.setStructure(structure["entity"])
+    templ.setBase(structure["base"])
     buildLayerDto = buildLayDto.BuildLayerDto()
     buildLayerMapper  =buildLayerM.BuildLayerMapper()
     buildLayerQuery= buildLayerQ.BuildLayerQuery()
+    buildLayerException=buildLayerEx.BuildLayerException()
+    buildLayerConfig=buildLayerCon.BuildLayerConfig()
+
     buildLayerDto.buildComponent(structure)
-   # buildLayerQuery.buildComponent(structure)
+    buildLayerQuery.buildComponent(structure)
     buildLayerMapper.buildComponent(structure)
+    buildLayerException.buildComponent()
+    buildLayerConfig.buildComponent()
 
 
 

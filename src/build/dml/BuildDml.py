@@ -15,7 +15,12 @@ class BuildDml:
         values = self.doUpdate()
         where = self.doWhere()
         return "UPDATE  " + self.structuredto["table"] + " SET " + values+ " "+where
-
+    def buildDelete(self, structureDto):
+        templ = template.SharedTemplate()
+        self.structuredto = structureDto
+        self.structuregeneral = templ.getStructure()
+        where = self.doWhere()
+        return "DELETE FROM  " + self.structuredto["table"]  + " " + where
     def doInsert(self):
         tokenField=[]
         for item in self.structuredto["attributes"]:

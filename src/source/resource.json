@@ -1,83 +1,91 @@
 {
- "maestra": {"package": "dto.maestra",
-        "name": "Maestra",
-        "table": "maestra",
-        "attributes": [
-           {
-            "name": "cdmaestra",
-            "type": "integer",
-            "pk":"y",
-            "foreing-key": "n"
-          },
-
-          {
-            "name": "nombre",
-            "type": "varchar",
-            "pk":"n",
-            "foreing-key": "n"
-          }
-
-        ]
-  },
-  "ciudad": {"package": "dto.ciudad",
-        "name": "Ciudad",
-        "table": "ciudad",
-        "attributes": [
-           {
-            "name": "nmciudad",
-            "type": "integer",
-            "pk":"y",
-            "foreing-key": "n"
-          },
-          {
-            "name": "codigo",
-            "type": "varchar",
-            "pk":"n",
-            "foreing-key": "n"
-          },
-          {
-            "name": "nombre",
-            "type": "varchar",
-            "pk":"n",
-            "foreing-key": "n"
-          }
-
-        ]
-  },
-  "persona":{
-        "package": "dto.persona",
-        "name": "Personas",
-        "table": "persona",
-        "attributes": [
-          {
-            "name": "codigo",
-            "type": "varchar",
-            "pk":"y",
-            "filter": "y",
-            "foreing-key": "n"
-          },
-          {
-            "name": "nombre",
-            "type": "varchar",
-            "pk":"n",
-             "foreing-key": "n"
-          },
-          {
-            "name": "nmciudadt",
-            "type": "integer",
-            "pk":"n",
-            "foreing-key": "y",
-             "foreing": {"name": "ciudad"}
-
-          },
-          {
-            "name": "cdpais",
-            "type": "integer",
-            "pk":"n",
-            "foreing-key": "y",
-             "foreing": {"name": "maestra"}
-
-          }
-        ]
-      }
+	"base": {
+		"realpath": "D:\\temp\\proyecto-test\\demo\\src\\main\\java\\",
+		"resources": "D:\\temp\\proyecto-test\\demo\\src\\main\\resources\\",
+		"groupId": "com.softcaribbean.demo"
+	},
+	"entity": {
+		"maestra": {
+			"package": "dto.maestra",
+			"name": "Maestra",
+			"table": "maestra",
+			"attributes": [
+				{
+					"name": "cdmaestra",
+					"type": "integer",
+					"pk": "y",
+					"foreing-key": "n"
+				},
+				{
+					"name": "nombre",
+					"type": "varchar",
+					"pk": "n",
+					"foreing-key": "n"
+				}
+			]
+		},
+		"ciudad": {
+			"package": "dto.ciudad",
+			"name": "Ciudad",
+			"table": "ciudad",
+			"attributes": [
+				{
+					"name": "nmciudad",
+					"type": "integer",
+					"pk": "y",
+					"foreing-key": "n"
+				},
+				{
+					"name": "codigo",
+					"type": "varchar",
+					"pk": "n",
+					"foreing-key": "n"
+				},
+				{
+					"name": "nombre",
+					"type": "varchar",
+					"pk": "n",
+					"foreing-key": "n"
+				}
+			]
+		},
+		"persona": {
+			"package": "dto.persona",
+			"name": "Personas",
+			"table": "persona",
+			"attributes": [
+				{
+					"name": "codigo",
+					"type": "varchar",
+					"pk": "y",
+					"filter": "y",
+					"foreing-key": "n"
+				},
+				{
+					"name": "nombre",
+					"type": "varchar",
+					"pk": "n",
+					"foreing-key": "n"
+				},
+				{
+					"name": "nmciudadt",
+					"type": "integer",
+					"pk": "n",
+					"foreing-key": "y",
+					"foreing": {
+						"name": "ciudad"
+					}
+				},
+				{
+					"name": "cdpais",
+					"type": "integer",
+					"pk": "n",
+					"foreing-key": "y",
+					"foreing": {
+						"name": "maestra"
+					}
+				}
+			]
+		}
+	}
 }

@@ -1,13 +1,15 @@
 package <package>;
 
-import co.com.prinza.arpi.config.ManagerQuery;
+import <base-package>.config.ManagerQuery;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Map;
-
+import javax.sql.DataSource;
+import <base-package>.exception.DataAccesException;
+<IMPORT>
 
 @Repository
 public class <NameClass>Impl implements <NameClass>  {
@@ -21,14 +23,14 @@ public class <NameClass>Impl implements <NameClass>  {
     }
 
     @Override
-    public List<<DTO>> getAll() {
+    public List<<DTO>> getAll() throws DataAccesException {
 
         String QUERY = managerQuery.getQuery("<QUERY_GET_ALL>");
         return jdbcTemplate.query(QUERY, new <MAPPER>);
     }
 
     @Override
-    public <DTO> getById(String id) {
+    public <DTO> getById(String id) throws DataAccesException{
         try{
             String QUERY = managerQuery.getQuery("<QUERY_BY_ID>");
             return jdbcTemplate.queryForObject(QUERY, new <MAPPER>,id);
@@ -39,8 +41,8 @@ public class <NameClass>Impl implements <NameClass>  {
     }
 
     @Override
-    public <DTO> insert(<DTO> entity) {
-		String INSERT = managerQuery.getQuery("<INSERT>");
+    public <DTO> insert(<DTO> entity) throws DataAccesException{
+		String INSERT = managerQuery.getQuery("<INSERT_ID>");
 
 		jdbcTemplate.update(INSERT,<PARAM_INSERT>);
 		return entity;
@@ -48,15 +50,15 @@ public class <NameClass>Impl implements <NameClass>  {
     }
 
     @Override
-    public <DTO> update(<DTO> entity) {
-		String UPDATE = managerQuery.getQuery("<UPDATE>");
+    public <DTO> update(<DTO> entity) throws DataAccesException{
+		String UPDATE = managerQuery.getQuery("<UPDATE_ID>");
         jdbcTemplate.update(UPDATE,<PARAM_UPDATE>);
         return entity;
     }
 
     @Override
-    public Boolean delete(String id) {
-		String DELETE = managerQuery.getQuery("<DELETE>");
+    public Boolean delete(String id) throws DataAccesException {
+		String DELETE = managerQuery.getQuery("<DELETE_ID>");
         return jdbcTemplate.update(DELETE,
                 id
         )>0;
