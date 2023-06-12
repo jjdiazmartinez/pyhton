@@ -1,4 +1,7 @@
 package <package>.exception;
+/**
+*Code generate for charmarin by softcaribbean
+*/
 public class DataManagerException extends Exception{
     public DataManagerException() {
     }

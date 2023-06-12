@@ -1,5 +1,7 @@
 package <package>.message;
-
+/**
+*Code generate for charmarin by softcaribbean
+*/
 public class ResponseMessage<T> {
 
     public ResponseMessage(){

@@ -9,9 +9,9 @@ class BuildLayerConfig:
         templateManagerQuery = template.SharedTemplate().getTemplateManagerquery()
         templateresponsemessage = template.SharedTemplate().getTemplateResponsemessage()
         templateManagerQuery = templateManagerQuery.replace("<package>", base["groupId"])
-
+        templateresponsemessage = templateresponsemessage.replace("<package>", base["groupId"])
         path = pack.create(base["realpath"], base["groupId"] + ".config")
         managerFile.write(base["realpath"] + path + "/" + "ManagerQuery.java", templateManagerQuery)
 
         path = pack.create(base["realpath"], base["groupId"] + ".message")
-        managerFile.write(base["realpath"] + path + "/" + "ResponseMessage.java", templateManagerQuery)
+        managerFile.write(base["realpath"] + path + "/" + "ResponseMessage.java", templateresponsemessage)

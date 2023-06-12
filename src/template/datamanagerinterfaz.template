@@ -1,0 +1,20 @@
+package <package>;
+
+
+
+import <base-package>.exception.DataManagerException;
+
+
+import java.util.List;
+import java.util.Map;
+<IMPORT>
+/**
+*Code generate for charmarin by softcaribbean
+*/
+
+public interface   DataManager<DTO> {
+
+    <DTO> saveOrUpdate(<DTO> entity) throws DataManagerException;
+
+
+}

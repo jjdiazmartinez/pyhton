@@ -1,12 +1,15 @@
 package <package>.exception;
 import <package>.message.ResponseMessage;
+/**
+*Code generate for charmarin by softcaribbean
+*/
 public class BusinessLogicException extends Exception {
 
 	private static final long serialVersionUID = 2962065458808354006L;
 	private final int code;
 	private final String message;
 
-	public ApplicationCustomException (int code, String message) {
+	public BusinessLogicException (int code, String message) {
 		super(message);
 		this.code = code;
 		this.message = message;

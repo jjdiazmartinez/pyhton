@@ -11,6 +11,7 @@ import src.build.java.BuildLayerQuery as buildLayerQ
 import src.build.java.BuildLayerMapper as buildLayerM
 import src.build.java.BuildLayerException as buildLayerEx
 import src.build.java.BuildLayerConfig as buildLayerCon
+import src.build.java.BuildLayerDatamanager as buildLayerDat
 import json
 def build():
 
@@ -27,12 +28,14 @@ def build():
     buildLayerQuery= buildLayerQ.BuildLayerQuery()
     buildLayerException=buildLayerEx.BuildLayerException()
     buildLayerConfig=buildLayerCon.BuildLayerConfig()
+    buildLayerDatamanager=buildLayerDat.BuildLayerDatamanager()
 
     buildLayerDto.buildComponent(structure)
     buildLayerQuery.buildComponent(structure)
     buildLayerMapper.buildComponent(structure)
     buildLayerException.buildComponent()
     buildLayerConfig.buildComponent()
+    buildLayerDatamanager.buildComponent(structure)
 
 
 

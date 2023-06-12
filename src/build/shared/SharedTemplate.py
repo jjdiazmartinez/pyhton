@@ -18,6 +18,8 @@ class SharedTemplate(object):
             self.datapersistinterfaz =managerFile.load("D:/Areas/tool-python/estructura-py/src/template/datapersistinterfaz.template")
             self.managerquery=managerFile.load("D:/Areas/tool-python/estructura-py/src/template/managerquery.template")
             self.responsemessage=managerFile.load("D:/Areas/tool-python/estructura-py/src/template/responsemessage.template")
+            self.datamanager=managerFile.load("D:/Areas/tool-python/estructura-py/src/template/datamanager.template")
+            self.datamanagerinterfaz = managerFile.load("D:/Areas/tool-python/estructura-py/src/template/datamanagerinterfaz.template")
             self.types = json.loads(self.type_structure)
             #Creo un diccionario
             self.types_own = dict()
@@ -40,6 +42,12 @@ class SharedTemplate(object):
             return self.managerquery
         def getTemplateResponsemessage(self):
             return self.responsemessage
+
+        def getTemplateDatamanager(self):
+            return self.datamanager
+        def getTemplateDatamanagerinterfaz(self):
+            return self.datamanagerinterfaz
+        
         def getTypeStructure(self):
             return self.types
         def setType(self,name,type):

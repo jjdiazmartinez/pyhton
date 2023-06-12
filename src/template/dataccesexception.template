@@ -1,4 +1,7 @@
 package <package>.exception;
+/**
+*Code generate for charmarin by softcaribbean
+*/
 public class DataAccesException extends Exception{
     public DataAccesException() {
     }

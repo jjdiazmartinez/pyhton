@@ -10,7 +10,9 @@ import java.util.Map;
 import javax.sql.DataSource;
 import <base-package>.exception.DataAccesException;
 <IMPORT>
-
+/**
+*Code generate for charmarin by softcaribbean
+*/
 @Repository
 public class <NameClass>Impl implements <NameClass>  {
 

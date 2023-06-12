@@ -1,0 +1,49 @@
+package <package>;
+
+
+import org.springframework.stereotype.Component;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import <base-package>.exception.DataManagerException;
+import <base-package>.exception.DataAccesException;
+
+import java.util.List;
+import java.util.Map;
+<IMPORT>
+/**
+*Code generate for charmarin by softcaribbean
+*/
+@Component
+public class DataManager<DTO>Impl implements DataManager<DTO> {
+
+    private final Logger log = LoggerFactory.getLogger( DataManager<DTO>Impl.class);
+
+    private final <DTO>DataAcces <DTOParam>DataAcces;
+
+    public DataManager<DTO>Impl(<DTO>DataAcces <DTOParam>DataAcces) {
+        this.<DTOParam>DataAcces = <DTOParam>DataAcces;
+    }
+
+    @Override
+    public <DTO> saveOrUpdate(<DTO> entity) throws DataManagerException {
+        log.debug("Request to insert <DTO> : {}", entity);
+         <DTO> _entity_find = null;
+        try{
+             _entity_find =  this.<DTOParam>DataAcces.getById(<KEY>);
+
+            if(_entity_find==null){
+                _entity_find=this.<DTOParam>DataAcces.insert(entity);
+            }else{
+                _entity_find=this.<DTOParam>DataAcces.update(entity);
+
+            }
+        }catch(DataAccesException de){
+           throw new DataManagerException(de);
+        }catch(Exception ex){
+         throw new DataManagerException(ex);
+        }
+        return _entity_find;
+    }
+
+
+}
