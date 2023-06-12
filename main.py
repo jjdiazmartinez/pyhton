@@ -12,6 +12,7 @@ import src.build.java.BuildLayerMapper as buildLayerM
 import src.build.java.BuildLayerException as buildLayerEx
 import src.build.java.BuildLayerConfig as buildLayerCon
 import src.build.java.BuildLayerDatamanager as buildLayerDat
+import src.build.java.BuildLayerBusinessLogic as buildLayerBusLogic
 import json
 def build():
 
@@ -29,6 +30,7 @@ def build():
     buildLayerException=buildLayerEx.BuildLayerException()
     buildLayerConfig=buildLayerCon.BuildLayerConfig()
     buildLayerDatamanager=buildLayerDat.BuildLayerDatamanager()
+    buildLayerBusinessLogic=buildLayerBusLogic.BuildLayerBusinessLogic()
 
     buildLayerDto.buildComponent(structure)
     buildLayerQuery.buildComponent(structure)
@@ -36,6 +38,7 @@ def build():
     buildLayerException.buildComponent()
     buildLayerConfig.buildComponent()
     buildLayerDatamanager.buildComponent(structure)
+    buildLayerBusinessLogic.buildComponent(structure)
 
 
 

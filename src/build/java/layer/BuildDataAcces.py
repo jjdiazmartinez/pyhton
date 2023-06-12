@@ -13,6 +13,7 @@ class BuildDataAcces:
         self.doUpdate()
         self.doGet()
         self.doDelete()
+        self.doByid()
         return self.template
     def doHead(self):
         base = template.SharedTemplate().getBase()
@@ -52,7 +53,22 @@ class BuildDataAcces:
 
 
         self.template = self.template.replace("<QUERY_GET_ALL>", "select_" + self.structure["name"] + "_forall")
-        self.template = self.template.replace("<QUERY_BY_ID>", "select_"+self.structure["name"]+"_byid")
         self.template = self.template.replace("<MAPPER>", self.structure["name"] + "Mapper()")
     def doDelete(self):
+        tokenField = []
+        # Se coloca el ultimo campo de filtrado como la pK
+        listPk = list(utildic.filter_dict_by_attribute(self.structure["attributes"], "pk", "y"))
+        tokenField.append("entity.get" + listPk[0]["name"].capitalize() + "()")
+
         self.template = self.template.replace("<DELETE_ID>", "delete_" + self.structure["name"])
+        self.template = self.template.replace("<KEY>", "".join(tokenField))
+
+    def doByid(self):
+        tokenField = []
+        # Se coloca el ultimo campo de filtrado como la pK
+        listPk = list(utildic.filter_dict_by_attribute(self.structure["attributes"], "pk", "y"))
+        tokenField.append("entity.get" + listPk[0]["name"].capitalize() + "()")
+        self.template = self.template.replace("<QUERY_BY_ID>", "select_" + self.structure["name"] + "_byid")
+        self.template = self.template.replace("<KEY>", "".join(tokenField))
+
+

@@ -20,6 +20,8 @@ class SharedTemplate(object):
             self.responsemessage=managerFile.load("D:/Areas/tool-python/estructura-py/src/template/responsemessage.template")
             self.datamanager=managerFile.load("D:/Areas/tool-python/estructura-py/src/template/datamanager.template")
             self.datamanagerinterfaz = managerFile.load("D:/Areas/tool-python/estructura-py/src/template/datamanagerinterfaz.template")
+            self.businesslogic=managerFile.load("D:/Areas/tool-python/estructura-py/src/template/businesslogic.template")
+            self.businesslogicinterfaz=managerFile.load("D:/Areas/tool-python/estructura-py/src/template/businesslogicinterfaz.template")
             self.types = json.loads(self.type_structure)
             #Creo un diccionario
             self.types_own = dict()
@@ -47,7 +49,10 @@ class SharedTemplate(object):
             return self.datamanager
         def getTemplateDatamanagerinterfaz(self):
             return self.datamanagerinterfaz
-        
+        def getTemplateBusinesslogicinterfaz(self):
+            return self.businesslogicinterfaz
+        def getTemplateBusinesslogic(self):
+            return self.businesslogic
         def getTypeStructure(self):
             return self.types
         def setType(self,name,type):
