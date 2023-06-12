@@ -13,6 +13,7 @@ import src.build.java.BuildLayerException as buildLayerEx
 import src.build.java.BuildLayerConfig as buildLayerCon
 import src.build.java.BuildLayerDatamanager as buildLayerDat
 import src.build.java.BuildLayerBusinessLogic as buildLayerBusLogic
+import src.build.java.BuildLayerController as buildLayerCtrl
 import json
 def build():
 
@@ -31,6 +32,7 @@ def build():
     buildLayerConfig=buildLayerCon.BuildLayerConfig()
     buildLayerDatamanager=buildLayerDat.BuildLayerDatamanager()
     buildLayerBusinessLogic=buildLayerBusLogic.BuildLayerBusinessLogic()
+    buildLayerController=buildLayerCtrl.BuildLayerController()
 
     buildLayerDto.buildComponent(structure)
     buildLayerQuery.buildComponent(structure)
@@ -39,6 +41,7 @@ def build():
     buildLayerConfig.buildComponent()
     buildLayerDatamanager.buildComponent(structure)
     buildLayerBusinessLogic.buildComponent(structure)
+    buildLayerController.buildComponent(structure)
 
 
 
